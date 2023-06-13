@@ -16,12 +16,14 @@ def main():
     x = 0
     kkmv = 0
     fs = 500
+    num=0
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
 
         screen.blit(bg_img, [-x, 0])
         screen.blit(bg_img_f, [1600-x, 0])
+        screen.blit(bg_img, [3200-x, 0])
         if tmr%(fs//5)<=fs//10:
             kkmv = 0
         else:
@@ -29,9 +31,10 @@ def main():
         screen.blit(lst1[kkmv], [300, 200])
         pg.display.update()
         tmr += 1    
-        x+=1
-        if x >= 1600:
-            x = 0
+        x = num%3200
+        num+=1
+        #if x >= 1600:
+            #x = 0
         clock.tick(fs)
 
 
